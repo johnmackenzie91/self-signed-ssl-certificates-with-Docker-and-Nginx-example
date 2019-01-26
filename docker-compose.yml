@@ -1,0 +1,12 @@
+version: '2'
+services:
+  server:
+    image: nginx:1.15
+    volumes:
+    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    - ./site:/usr/share/nginx/html
+    - ./nginx/my-site.com.crt:/etc/nginx/my-site.com.crt # New Line!
+    - ./nginx/my-site.com.key:/etc/nginx/my-site.com.key # New Line!
+    ports:
+    - "8080:80"
+    - "443:443" # Hey docker start listening on 443, and redirect to 443
